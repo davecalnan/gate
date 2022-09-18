@@ -4,7 +4,7 @@
 
 ## The Problem
 
-So often in my apps I find myself writing this code:
+Often in my apps I find myself writing code just like this:
 
 ```jsx
 const Example = () => {
@@ -14,6 +14,7 @@ const Example = () => {
   const canCreatePosts = permissions.includes("create posts");
   const canEditPosts = permissions.includes("edit posts");
 
+  // 1️⃣
   if (!canViewPosts) {
     return <p>You can't view posts.</p>;
   }
@@ -21,10 +22,12 @@ const Example = () => {
   return (
     <div>
       <h1>Posts</h1>
+      {/* 2️⃣ */}
       {canCreatePosts && <button>Add Post</button>}
       <div>
         <header>
           <h2>Post #1</h2>
+          {/* 3️⃣ */}
           {canEditPosts && <button>Edit Post</button>}
         </header>
       </div>
@@ -38,15 +41,18 @@ So I created a `Gate` compontent to abstract this pattern and let me write my co
 ```jsx
 const Example = () => {
   return (
+    /* 1️⃣ */
     <Gate ability="view posts" fallback={<p>You can't view posts.</p>}>
       <div>
         <h1>Posts</h1>
+        {/* 2️⃣ */}
         <Gate ability="create posts">
           <button>Add Post</button>
         </Gate>
         <div>
           <header>
             <h2>Post #1</h2>
+            {/* 3️⃣ */}
             <Gate ability="edit posts">
               {canEditPosts && <button>Edit Post</button>}
             </Gate>
