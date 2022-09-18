@@ -1,0 +1,29 @@
+{
+  "name": "@davekit/gate",
+  "version": "0.1.0",
+  "description": "Easily conditionally render UI based on user privileges.",
+  "author": "Dave Calnan <d@ve.ie>",
+  "repository": "https://github.com/davecalnan/typesafe-api",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+    "dev": "yarn build --watch",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "typecheck": "tsc -b"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.0",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.3"
+  }
+}
