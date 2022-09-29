@@ -64,7 +64,7 @@ const Example = () => {
 };
 ```
 
-Admittedly it may look like a minor difference but I like that I can write my privilege checks directly in my markup without having to call any hooks or add variables to the body of the function. It's kind of like TailwindCSS, I feel a productivity benefit from being able to say in my markup and write more declarative code.
+Admittedly it may look like a minor difference but I like that I can write my privilege checks directly in my markup without having to call any hooks or add variables to the body of the function. It's kind of like TailwindCSS, I feel a productivity benefit from being able to stay in my markup and write more declarative code.
 
 ## Installation
 
@@ -178,7 +178,7 @@ const AllAbilities = () => {
     <div>
       <h1>Super Secret Menu</h1>
       <Gate
-        ability={{ all: ["admin", "super_secret_menu_admin", "super_secret_menu_admin_editor] }}
+        ability={{ all: ["admin", "super_secret_menu_admin", "super_secret_menu_admin_editor"] }}
       >
         <button>Edit</button>
       </Gate>
@@ -225,7 +225,7 @@ const Example = () => {
 
 Note: TypeScript will give out to you because it wants `abilities` to be an array of strings but I promise it works. I just need to make those types generic!
 
-This usage isn't incredibly useful as you could just map the permissions to an array of names but providing a custom `satisfies` function can give a lot of flexbility. Such as...
+This particular example isn't incredibly useful as you could just map the permissions to an array of names but providing a custom `satisfies` function can give a lot of flexbility. Such as...
 
 ### Implement wildcard abilities
 
