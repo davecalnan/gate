@@ -26,7 +26,6 @@ export type UseGate = {
 
 export const useGate: UseGate = (arg) => {
   const { abilities, satisfies } = useGateContext();
-  console.log({ arg, abilities, satisfies });
 
   const hasAbility = (
     requiredAbility: RequiredAbility,
