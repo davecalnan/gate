@@ -1,12 +1,9 @@
 import React, { createContext, useContext } from "react";
-import { RequiredAbility, Ability } from "./types";
+import { Ability, Satifies } from "./types";
 
 export type GateContext = {
-  abilities: string[];
-  satisfies: (
-    requiredAbility: RequiredAbility,
-    abilityToTest: Ability
-  ) => boolean;
+  abilities: Ability[];
+  satisfies?: Satifies;
 };
 
 const GateContext = createContext<GateContext | null>(null);
@@ -21,14 +18,13 @@ export const useGateContext = () => {
   return context;
 };
 
-export type GateProviderProps = Omit<GateContext, "satisfies"> & {
-  satisfies?: GateContext["satisfies"];
+export type GateProviderProps = GateContext & {
   children?: React.ReactNode;
 };
 
 export const GateProvider = ({
   abilities,
-  satisfies = Object.is,
+  satisfies,
   children,
 }: GateProviderProps) => {
   return (

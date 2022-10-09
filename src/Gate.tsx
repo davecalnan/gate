@@ -1,10 +1,11 @@
 import React from "react";
-import { UseGate, useGate } from "./useGate";
+import { GateTest } from "types";
+import { useGate } from "./useGate";
 
 type GateProps = {
   children?: React.ReactNode;
   fallback?: React.ReactNode | null;
-  ability: Parameters<UseGate>[0];
+  ability: GateTest;
 };
 
 /**

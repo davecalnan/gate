@@ -1,3 +1,4 @@
+export * from "./check";
 export * from "./Gate";
 export * from "./GateProvider";
 export * from "./types";
