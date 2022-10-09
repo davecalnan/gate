@@ -16,14 +16,24 @@
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
     "dev": "yarn build --watch",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "test": "vitest"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@types/react": "^16.8.0",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "@vitejs/plugin-react": "^2.1.0",
+    "happy-dom": "^7.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tsup": "^6.2.3",
-    "typescript": "^4.8.3"
-  }
+    "typescript": "^4.8.3",
+    "vitest": "^0.24.0"
+  },
+  "dependencies": {}
 }
