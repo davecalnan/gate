@@ -1,14 +1,14 @@
-import { Ability, Satifies, GateTest } from "./types";
+import { GateAbility, Satifies, GateTest } from "./types";
 
-export const check = ({
+export function check<Ability extends GateAbility>({
   abilities,
   test,
   satisfies = Object.is,
 }: {
   abilities: Ability[];
-  test: GateTest;
+  test: GateTest<Ability>;
   satisfies?: Satifies;
-}) => {
+}) {
   const hasAbility = (requiredAbility: Ability, abilities: Ability[]) => {
     return !!abilities.find((ability) => satisfies(requiredAbility, ability));
   };
@@ -34,4 +34,4 @@ export const check = ({
   }
 
   throw new Error("Invalid arguments passed to Gate.");
-};
+}

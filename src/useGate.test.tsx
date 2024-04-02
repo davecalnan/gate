@@ -1,13 +1,16 @@
 import { renderHook } from "@testing-library/react";
-import { GateProviderProps } from "./GateProvider";
-import { UseGate, useGate } from "./useGate";
 import { makeWrapper } from "../test/util";
+import { createGate } from "./Gate";
 
-const setup = (props: Omit<GateProviderProps, "children">) => {
-  const wrapper = makeWrapper(props);
+const Gate = createGate();
 
-  const renderUseGate = (arg: Parameters<UseGate>[0]) =>
-    renderHook(() => useGate(arg), { wrapper });
+const setup = (
+  props: Omit<React.ComponentProps<(typeof Gate)["Provider"]>, "children">
+) => {
+  const wrapper = makeWrapper(Gate, props);
+
+  const renderUseGate = (arg: Parameters<(typeof Gate)["useGate"]>[0]) =>
+    renderHook(() => Gate.useGate(arg), { wrapper });
 
   return { renderUseGate };
 };

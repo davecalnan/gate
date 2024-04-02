@@ -1,16 +1,18 @@
 import React from "react";
 import { render, RenderResult, screen } from "@testing-library/react";
-import { GateProviderProps } from "./GateProvider";
-import { UseGate } from "./useGate";
 import { makeWrapper } from "../test/util";
-import { Gate } from "./Gate";
+import { createGate } from "./Gate";
 
-const setup = (props: Omit<GateProviderProps, "children">) => {
-  const wrapper = makeWrapper(props);
+const Gate = createGate();
+
+const setup = (
+  props: Omit<React.ComponentProps<(typeof Gate)["Provider"]>, "children">
+) => {
+  const wrapper = makeWrapper(Gate, props);
 
   let previousResult: { current: RenderResult | null } = { current: null };
 
-  const renderGate = (ability: Parameters<UseGate>[0]) => {
+  const renderGate = (ability: Parameters<(typeof Gate)["useGate"]>[0]) => {
     if (previousResult.current) {
       previousResult.current.unmount();
     }

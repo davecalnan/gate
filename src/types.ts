@@ -1,15 +1,15 @@
 /**
- * It would be nice to maket these dynamic, but for now we'll just insist they are strings.
+ * It would be nice to make these dynamic, but for now we'll just insist they are strings.
  */
 
-export type Ability = string;
+export type GateAbility = string;
 
-export type Satifies = (
+export type Satifies<Ability extends GateAbility = GateAbility> = (
   requiredAbility: Ability,
   abilityToTest: Ability
 ) => boolean;
 
-export type GateTest =
+export type GateTest<Ability extends GateAbility = GateAbility> =
   | Ability
   | { ability: Ability }
   | { all: Ability[] }

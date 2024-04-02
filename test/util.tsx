@@ -1,8 +1,11 @@
 import React from "react";
-import { GateProviderProps, GateProvider } from "../src/GateProvider";
+import { createGate } from "Gate";
 
-export const makeWrapper = (props: Omit<GateProviderProps, "children">) => {
+export const makeWrapper = (
+  Gate: ReturnType<typeof createGate>,
+  props: Omit<React.ComponentProps<(typeof Gate)["Provider"]>, "children">
+) => {
   return ({ children }: { children: React.ReactNode }) => (
-    <GateProvider {...props}>{children}</GateProvider>
+    <Gate.Provider {...props}>{children}</Gate.Provider>
   );
 };
