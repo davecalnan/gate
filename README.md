@@ -54,7 +54,7 @@ const Example = () => {
             <h2>Post #1</h2>
             {/* 3️⃣ */}
             <Gate ability="edit posts">
-              {canEditPosts && <button>Edit Post</button>}
+              {<button>Edit Post</button>}
             </Gate>
           </header>
         </div>
